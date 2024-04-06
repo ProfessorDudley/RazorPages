@@ -1,11 +1,30 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Computer Specification";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <h1>
+        My Computer Specification
+    </h1>
+    <ul>
+        <li>@Model.Processor</li>
+        <li>@Model.Memory</li>
+        <li>@Model.Graphics</li>
+        @for(int i = 0; i < @Model.Storage.GetLength(0); i++){
+            <li><b>@Model.Storage[i,0]: </b>@Model.Storage[i,1]</li>
+        }
+        <li>@Model.Motherboard</li>
+        <li>@Model.Power</li>
+        <li>@Model.Case</li>
+    </ul>
+</body>
+</html>
