@@ -13,14 +13,14 @@
 </head>
 <body>
     <h1>
-        My Computer Specification
+        My Computer Specs
     </h1>
     <ul>
         <li>@Model.Processor</li>
         <li>@Model.Memory</li>
         <li>@Model.Graphics</li>
         @for(int i = 0; i < @Model.Storage.GetLength(0); i++){
-            <li><b>@Model.Storage[i,0]: </b>@Model.Storage[i,1]</li>
+            <li><b>Disk @i: </b>@Model.Storage[i]</li>
         }
         <li>@Model.Motherboard</li>
         <li>@Model.Power</li>

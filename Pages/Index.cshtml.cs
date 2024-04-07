@@ -12,10 +12,15 @@ public class IndexModel : PageModel
     public string Motherboard = "Gigabyte X570 Aorus Master";
     public string Power = "Corsair 850W 80+Gold";
     public string Case = "Jonsbo UMX4 Mid Tower";
-    public string[,] Storage = { {"Disk 1","Samsung 970 Evo Plus 1TB"}, {"Disk 2","Seagate FireCuda 520 2TB"}, {"Disk 3","Seagate IronWolf 3TB"},};
+    public string[] Storage = { "Samsung 970 Evo Plus 1TB", "Seagate FireCuda 520 2TB", "Seagate IronWolf 3TB"};
+    public int Count = 0;
     public void OnGet()
     {
         
+    }
+    public void OnPost()
+    {
+        Count++;
     }
 
     private readonly ILogger<IndexModel> _logger;    
