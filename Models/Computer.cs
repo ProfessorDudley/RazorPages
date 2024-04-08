@@ -1,13 +1,15 @@
-namespace RazorPages
+using System;
+
+namespace RazorPages.Models
 {
-	public class Computer()
+	public class Computer
 	{
-		public string? Processor;
-    public string? Memory;
-    public string? Graphics;
-    public string? Motherboard; 
-    public string? Power;
-    public string? Chassis;
-    public string[]? Storage;
+		public string Processor { get; set; }
+    public string Memory { get; set; }
+    public string Graphics { get; set; }
+    public string Motherboard { get; set; }
+    public string Power { get; set; }
+    public string Chassis { get; set; }
+    public List<string> Storage { get; set; }
 	}
 }

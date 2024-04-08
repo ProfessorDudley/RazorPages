@@ -1,25 +1,51 @@
-var builder = WebApplication.CreateBuilder(args);
+// using RazorPages.Data;
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+// var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+// // Add services to the container.
+// builder.Services.AddRazorPages();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+// var app = builder.Build();
+
+// // Configure the HTTP request pipeline.
+// if (!app.Environment.IsDevelopment())
+// {
+//     app.UseExceptionHandler("/Error");
+//     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+//     app.UseHsts();
+// }
+
+// app.UseHttpsRedirection();
+// app.UseStaticFiles();
+
+// app.UseRouting();
+
+// app.UseAuthorization();
+
+// app.MapRazorPages();
+
+// app.Run();
+
+
+namespace RazorPages
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args).Build();
+            // CreateDbIfNotExists(builder);
+            builder.Run();
+        }
+
+        private static void CreateDbIfNotExists(IHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<ComputerContext>;
+                context.Database.EnsureCreated();
+            }
+        }
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapRazorPages();
-
-app.Run();
